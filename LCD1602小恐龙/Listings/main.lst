@@ -1,0 +1,117 @@
+C51 COMPILER V9.54   MAIN                                                                  06/29/2022 18:33:44 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include <INTRINS.H>
+   3          #include "LCD1602.h"
+   4          #include "Key.h"
+   5          #include "Picture.h"
+   6          
+   7          void Move_Delay(int ms)   //@11.0592MHz,1ms
+   8          {
+   9   1        unsigned char i, j;
+  10   1        
+  11   1        while(ms--)
+  12   1        {
+  13   2          _nop_();
+  14   2          i = 2;
+  15   2          j = 199;
+  16   2          do
+  17   2          {
+  18   3            while (--j);
+  19   3          } while (--i);  
+  20   2        }
+  21   1      }
+  22          
+  23          void main()
+  24          { 
+  25   1        unsigned char Dy=2; //恐龙纵坐标
+  26   1        unsigned char Cx=16;  //仙人掌横坐标
+  27   1      
+  28   1        unsigned char KeyNum;
+  29   1        unsigned char Score=0;
+  30   1        unsigned char HH=11;//血量横坐标(上限)
+  31   1        unsigned char HL=8;//血量横坐标(下限)  
+  32   1      
+  33   1        LCD_Init();
+  34   1        Dinosaur();
+  35   1        Cactus(); 
+  36   1        Heart();
+  37   1        
+  38   1        while(1)
+  39   1        {
+  40   2          for(Cx=16;Cx>0;Cx--)
+  41   2          {   
+  42   3            unsigned char H=HH;
+  43   3            KeyNum=Key();
+  44   3            
+  45   3            LCD_ShowNum(1,14,3,Score);//分数
+  46   3            
+  47   3            //血量
+  48   3            for(H=HH;H>HL;H--)
+  49   3            {
+  50   4              LCD_ShowChar(1,H,0x02);       
+  51   4            }
+  52   3            
+  53   3            //移动
+  54   3            if(KeyNum==1)Dy=1;
+C51 COMPILER V9.54   MAIN                                                                  06/29/2022 18:33:44 PAGE 2   
+
+  55   3            else Dy=2;
+  56   3            LCD_ShowChar(Dy,2,0x00);//恐龙动
+  57   3            
+  58   3            LCD_ShowChar(2,Cx,0x01);//仙人掌动
+  59   3            Move_Delay(400);
+  60   3            LCD_Init();//刷新
+  61   3            
+  62   3            if(Dy==2 && Cx==3)//死亡判定
+  63   3            {
+  64   4              LCD_ShowNum(1,14,3,Score);
+  65   4              HH--;
+  66   4              if(HH==HL)while(1){LCD_ShowString(2,3,"Game Over!!!");}
+  67   4            }
+  68   3            else if(Dy==1 && Cx==3)//加分判定
+  69   3            {
+  70   4              Score++;
+  71   4            }
+  72   3            else if(KeyNum==3)//暂停
+  73   3            {
+  74   4        
+  75   4              while(KeyNum!=4)
+  76   4              {       
+  77   5                KeyNum=Key();   
+  78   5                LCD_ShowNum(1,14,3,Score);//分数
+  79   5                LCD_ShowChar(2,Cx,0x01);//仙人掌动
+  80   5                LCD_ShowChar(Dy,2,0x00);//恐龙动
+  81   5                for(H=HH;H>HL;H--)
+  82   5                {
+  83   6                  LCD_ShowChar(1,H,0x02);       
+  84   6                }       
+  85   5                LCD_ShowString(1,4,"STOP");//分数
+  86   5              }
+  87   4            }
+  88   3          }
+  89   2        }
+  90   1      }
+  91          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    305    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,108 @@
+C51 COMPILER V9.54   PICTURE                                                               06/29/2022 18:33:44 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE PICTURE
+OBJECT MODULE PLACED IN .\Objects\Picture.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Picture.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\P
+                    -icture.lst) TABS(2) OBJECT(.\Objects\Picture.obj)
+
+line level    source
+
+   1          #include "LCD1602.h"
+   2          
+   3          void Dinosaur()//自定义恐龙字符  0x00
+   4          {
+   5   1          LCD_WriteCommand(0x40);   //01 000 000
+   6   1          LCD_WriteData(0x0F);
+   7   1          
+   8   1          LCD_WriteCommand(0x41);   //01 000 001
+   9   1          LCD_WriteData(0x0B);
+  10   1          
+  11   1          LCD_WriteCommand(0x42);   //01 000 010
+  12   1          LCD_WriteData(0x0E);
+  13   1          
+  14   1          LCD_WriteCommand(0x43);   //01 000 011
+  15   1          LCD_WriteData(0x0F);
+  16   1          
+  17   1          LCD_WriteCommand(0x44);   //01 000 100
+  18   1          LCD_WriteData(0x0E);
+  19   1          
+  20   1          LCD_WriteCommand(0x45);   //01 000 101
+  21   1          LCD_WriteData(0x0E);
+  22   1          
+  23   1          LCD_WriteCommand(0x46);   //01 000 110
+  24   1          LCD_WriteData(0x1E);
+  25   1          
+  26   1          LCD_WriteCommand(0x47);   //01 000 111
+  27   1          LCD_WriteData(0x0A);
+  28   1      }
+  29          
+  30          void Cactus()//自定义仙人掌字符  0x01
+  31          {
+  32   1          LCD_WriteCommand(0x48);   //01 001 000
+  33   1          LCD_WriteData(0x00);
+  34   1          
+  35   1          LCD_WriteCommand(0x49);   //01 001 001
+  36   1          LCD_WriteData(0x04);
+  37   1          
+  38   1          LCD_WriteCommand(0x4A);   //01 001 010
+  39   1          LCD_WriteData(0x05);
+  40   1          
+  41   1          LCD_WriteCommand(0x4B);   //01 001 011
+  42   1          LCD_WriteData(0x05);
+  43   1          
+  44   1          LCD_WriteCommand(0x4C);   //01 001 100
+  45   1          LCD_WriteData(0x17);
+  46   1          
+  47   1          LCD_WriteCommand(0x4D);   //01 001 101
+  48   1          LCD_WriteData(0x14);
+  49   1          
+  50   1          LCD_WriteCommand(0x4E);   //01 001 110
+  51   1          LCD_WriteData(0x1C);
+  52   1          
+  53   1          LCD_WriteCommand(0x4F);   //01 001 111
+  54   1          LCD_WriteData(0x04);
+C51 COMPILER V9.54   PICTURE                                                               06/29/2022 18:33:44 PAGE 2   
+
+  55   1      }
+  56          
+  57          void Heart()//自定义心形字符  0x02
+  58          {
+  59   1          LCD_WriteCommand(0x50);   //01 010 000
+  60   1          LCD_WriteData(0x00);
+  61   1          
+  62   1          LCD_WriteCommand(0x51);   //01 010 001
+  63   1          LCD_WriteData(0x00);
+  64   1          
+  65   1          LCD_WriteCommand(0x52);   //01 010 010
+  66   1          LCD_WriteData(0x1B);
+  67   1          
+  68   1          LCD_WriteCommand(0x53);   //01 010 011
+  69   1          LCD_WriteData(0x1F);
+  70   1          
+  71   1          LCD_WriteCommand(0x54);   //01 010 100
+  72   1          LCD_WriteData(0x1F);
+  73   1          
+  74   1          LCD_WriteCommand(0x55);   //01 010 101
+  75   1          LCD_WriteData(0x0E);
+  76   1          
+  77   1          LCD_WriteCommand(0x56);   //01 010 110
+  78   1          LCD_WriteData(0x04);
+  79   1          
+  80   1          LCD_WriteCommand(0x57);   //01 010 111
+  81   1          LCD_WriteData(0x00);
+  82   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    240    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
